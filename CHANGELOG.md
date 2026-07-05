@@ -1,5 +1,7 @@
 # Changelog
 
+[简体中文](CHANGELOG.zh-CN.md)
+
 ## 0.1.0
 
 - Add `codex-shell-path-manager` plugin.

@@ -1,5 +1,7 @@
 # Codex Shell Path Marketplace
 
+English | [简体中文](README.zh-CN.md)
+
 A Git marketplace for `codex-shell-path-manager`, a Codex plugin that helps Windows Codex Desktop
 agents start in Git Bash instead of the native Windows PowerShell shell.
 

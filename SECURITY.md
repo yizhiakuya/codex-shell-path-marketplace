@@ -1,5 +1,7 @@
 # Security Policy
 
+[简体中文](SECURITY.zh-CN.md)
+
 This repository contains a community maintenance plugin that builds and runs a patched Codex CLI on
 Windows.
 

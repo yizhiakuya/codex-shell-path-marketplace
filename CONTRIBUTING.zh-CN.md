@@ -1,27 +1,25 @@
-# Contributing
+# 贡献指南
 
-[简体中文](CONTRIBUTING.zh-CN.md)
+[English](CONTRIBUTING.md)
 
-Thanks for improving this marketplace.
+感谢你改进这个 marketplace。
 
-## Development
+## 开发
 
-Validate the plugin after changes. If you have the Codex plugin creator helper installed locally,
-run:
+修改后请验证插件。如果本机安装了 Codex plugin creator helper，可以运行：
 
 ```bash
 python ~/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py plugins/codex-shell-path-manager
 ```
 
-You can also validate through Codex itself by adding this repository as a local marketplace and
-installing the plugin:
+也可以通过 Codex 自己验证：把本仓库作为本地 marketplace 添加并安装插件：
 
 ```bash
 codex plugin marketplace add .
 codex plugin add codex-shell-path-manager@codex-shell-path
 ```
 
-Check PowerShell syntax:
+检查 PowerShell 语法：
 
 ```powershell
 $files = @(
@@ -38,12 +36,12 @@ foreach ($f in $files) {
 }
 ```
 
-## Release
+## 发布
 
-1. Update `plugins/codex-shell-path-manager/.codex-plugin/plugin.json`.
-2. Validate the plugin.
-3. Commit and push to `main`.
-4. Users can refresh with:
+1. 更新 `plugins/codex-shell-path-manager/.codex-plugin/plugin.json`。
+2. 验证插件。
+3. commit 并 push 到 `main`。
+4. 用户可以用下面命令刷新：
 
 ```bash
 codex plugin marketplace upgrade codex-shell-path
