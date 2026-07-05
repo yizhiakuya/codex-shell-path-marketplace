@@ -10,7 +10,8 @@ OpenAI.
 
 This repository packages a maintenance plugin, not a replacement for Codex Desktop. The plugin
 builds a patched `codex.exe`, configures Desktop to start that patched CLI through
-`CODEX_CLI_PATH`, and writes `[windows].shell_path` in `~/.codex/config.toml`.
+`CODEX_CLI_PATH`, writes `[windows].shell_path` in `~/.codex/config.toml`, and updates the Windows
+shell tool description so new Codex sessions no longer describe the command tool as PowerShell-only.
 
 ## Status
 
@@ -96,8 +97,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\plugins\codex-git-bash-she
 6. Optionally runs targeted tests with `-RunTests`.
 7. Builds `codex-cli` and copies the patched executable to
    `~/.codex/bin/codex-git-bash/codex.exe`.
-8. Sets user `CODEX_CLI_PATH` to the patched executable.
-9. Updates `~/.codex/config.toml`:
+8. Updates the Windows shell command tool description to mention the active default shell and
+   include Git Bash examples.
+9. Sets user `CODEX_CLI_PATH` to the patched executable.
+10. Updates `~/.codex/config.toml`:
 
 ```toml
 [windows]
@@ -107,7 +110,7 @@ shell_path = "C:\\Program Files\\Git\\bin\\bash.exe"
 CODEX_CLI_PATH = "C:\\Users\\you\\.codex\\bin\\codex-git-bash\\codex.exe"
 ```
 
-10. Stores backups and state under `~/.codex/codex-git-bash-shell/`.
+11. Stores backups and state under `~/.codex/codex-git-bash-shell/`.
 
 The script does not modify the WindowsApps Codex installation.
 

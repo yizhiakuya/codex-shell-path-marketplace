@@ -10,3 +10,5 @@
 - Publish as a Codex Git marketplace with `.agents/plugins/marketplace.json`.
 - Add third-party notices for the OpenAI Codex Apache-2.0 patch target.
 - Add optional GitHub Releases binary install flow with SHA256 verification.
+- Update the patched Windows shell command tool description so it is no longer PowerShell-only and
+  includes Git Bash examples.

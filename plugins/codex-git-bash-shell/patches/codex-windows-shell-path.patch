@@ -401,6 +401,60 @@ index ece9d446b5..f7f46512aa 100644
  #[tokio::test]
  async fn session_new_fails_when_zsh_fork_enabled_without_packaged_zsh() {
      let codex_home = tempfile::tempdir().expect("create temp dir");
+diff --git a/codex-rs/core/src/tools/handlers/shell_spec.rs b/codex-rs/core/src/tools/handlers/shell_spec.rs
+index 3fb563bc1d..9da852184b 100644
+--- a/codex-rs/core/src/tools/handlers/shell_spec.rs
++++ b/codex-rs/core/src/tools/handlers/shell_spec.rs
+@@ -187,9 +187,20 @@ pub fn create_shell_command_tool(options: CommandToolOptions) -> ToolSpec {
+ 
+     let description = if cfg!(windows) {
+         format!(
+-            r#"Runs a Powershell command (Windows) and returns its output.
++            r#"Runs a shell command in the user's default Windows shell and returns its output.
+ 
+-Examples of valid command strings:
++The default shell may be PowerShell, cmd.exe, Git Bash, or another configured shell. Use syntax that matches the active shell.
++
++Examples for Git Bash or other POSIX-like shells:
++
++- ls -a (show hidden): "ls -a"
++- recursive find by name: "find . -name '*.py'"
++- recursive grep: "grep -R \"TODO\" ."
++- ps aux | grep python: "ps aux | grep python"
++- setting an env var: "export FOO=bar; echo $FOO"
++- running an inline Python script: "python - <<'PY'\nprint('Hello, world!')\nPY"
++
++Examples for PowerShell:
+ 
+ - ls -a (show hidden): "Get-ChildItem -Force"
+ - recursive find by name: "Get-ChildItem -Recurse -Filter *.py"
+diff --git a/codex-rs/core/src/tools/handlers/shell_spec_tests.rs b/codex-rs/core/src/tools/handlers/shell_spec_tests.rs
+index b7bbfa553c..a148f86758 100644
+--- a/codex-rs/core/src/tools/handlers/shell_spec_tests.rs
++++ b/codex-rs/core/src/tools/handlers/shell_spec_tests.rs
+@@ -207,9 +207,20 @@ fn shell_command_tool_matches_expected_spec() {
+     });
+ 
+     let description = if cfg!(windows) {
+-        r#"Runs a Powershell command (Windows) and returns its output.
++        r#"Runs a shell command in the user's default Windows shell and returns its output.
+ 
+-Examples of valid command strings:
++The default shell may be PowerShell, cmd.exe, Git Bash, or another configured shell. Use syntax that matches the active shell.
++
++Examples for Git Bash or other POSIX-like shells:
++
++- ls -a (show hidden): "ls -a"
++- recursive find by name: "find . -name '*.py'"
++- recursive grep: "grep -R \"TODO\" ."
++- ps aux | grep python: "ps aux | grep python"
++- setting an env var: "export FOO=bar; echo $FOO"
++- running an inline Python script: "python - <<'PY'\nprint('Hello, world!')\nPY"
++
++Examples for PowerShell:
+ 
+ - ls -a (show hidden): "Get-ChildItem -Force"
+ - recursive find by name: "Get-ChildItem -Recurse -Filter *.py"
 diff --git a/codex-rs/core/src/shell.rs b/codex-rs/core/src/shell.rs
 index ccd1ea20d2..2188b433ed 100644
 --- a/codex-rs/core/src/shell.rs

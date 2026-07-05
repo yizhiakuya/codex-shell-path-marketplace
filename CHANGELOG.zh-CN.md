@@ -10,3 +10,4 @@
 - 以 `.agents/plugins/marketplace.json` 格式发布为 Codex Git marketplace。
 - 添加 OpenAI Codex Apache-2.0 patch target 的第三方 notice。
 - 添加可选的 GitHub Releases binary 安装路径，并进行 SHA256 校验。
+- 更新 patched Windows shell command 工具说明，让它不再只写 PowerShell，并加入 Git Bash 示例。
