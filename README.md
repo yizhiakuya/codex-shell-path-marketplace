@@ -13,6 +13,35 @@ builds a patched `codex.exe`, configures Desktop to start that patched CLI throu
 `CODEX_CLI_PATH`, writes `[windows].shell_path` in `~/.codex/config.toml`, and updates the Windows
 shell tool description so new Codex sessions no longer describe the command tool as PowerShell-only.
 
+## Quick Start
+
+For most users, give this repository URL to Codex and ask it to install the plugin:
+
+```text
+Install this Codex plugin and configure Git Bash using the release binary:
+https://github.com/yizhiakuya/codex-git-bash
+```
+
+Codex can then run the normal plugin install commands:
+
+```bash
+codex plugin marketplace add https://github.com/yizhiakuya/codex-git-bash --ref main
+codex plugin add codex-git-bash-shell@codex-git-bash
+```
+
+After that, start a new Codex thread and ask:
+
+```text
+Use codex-git-bash-shell to repair my Codex Git Bash shell setup.
+```
+
+The plugin defaults to the recommended release-binary install path, so users do not need to build
+Codex locally. Restart Codex Desktop and open a new thread after installation.
+
+Prebuilt release assets are published at:
+
+<https://github.com/yizhiakuya/codex-git-bash/releases>
+
 ## Status
 
 This is a community workaround for Windows shell selection. It is useful while upstream Codex does
@@ -53,7 +82,9 @@ After installing the plugin, start a new Codex thread and ask:
 Use codex-git-bash-shell to repair my Codex Git Bash shell setup.
 ```
 
-The skill will guide Codex to run the bundled scripts.
+The skill will guide Codex to run the bundled scripts. The recommended path uses
+`-UseReleaseBinary`, which downloads the latest `codex-git-bash-windows-x86_64.zip` release asset
+instead of building from source.
 
 You can also run the scripts directly from the installed plugin cache or from this repository:
 
